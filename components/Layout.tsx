@@ -1,7 +1,13 @@
 import { FC, PropsWithChildren } from "react";
+import Header from "./Header";
 
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
-  return <div style={{ color: "red" }}>{children}</div>;
+  return (
+    <>
+      <Header />
+      <main>{children}</main>
+    </>
+  );
 };
 
 export default Layout;
