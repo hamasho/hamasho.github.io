@@ -3,8 +3,8 @@ import Link from "next/link";
 import { css } from "@emotion/react";
 
 const headerStyle = css`
-  box-shadow: 0px 4px 10px 10px rgba(0, 0, 0, 0.2);
-  padding: 16px 8px;
+  box-shadow: 0px 4px 6px 6px rgba(0, 0, 0, 0.2);
+  padding: 12px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
