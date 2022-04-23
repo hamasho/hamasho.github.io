@@ -1,11 +1,25 @@
-import Layout from "../../components/BlogLayout.tsx";
+import Layout from "../../src/components/layout/BlogLayout.tsx";
 
 export const meta = {
-  title: "Django Rest Framework's Class Based View may not Your Answer"
+  title: "Django REST Framework's Class Based View Abstructions May Not Your Answer",
+  date: "2022-04-24",
 }
 
 # {meta.title}
 
-this post is about to something
+Django REST framework (DRF) is a powerful web framework
+developed top on battery-included Django framework.
+Django provides great abstructions dealing with
+databases, ORM, static files, templates and more.
+But for a long time, web apps have inclined toward
+single page application (SPA).
+Django's ability to create HTML templates is not used as much as before.
+Instead, we need to response in JSON format.
+But Django doesn't provide much functionalities around this.
+
+DRF provides several features to make it easy.
+It has serializers/deserializers to become a bridge
+between JSON representations and Django models.
+
 
 export default ({ children }) => <Layout>{children}</Layout>;

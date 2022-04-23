@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { css } from "@emotion/react";
-import Layout from "../components/layout/Layout";
+import Layout from "../src/components/layout/Layout";
 
 const Home: NextPage = () => {
   return (
