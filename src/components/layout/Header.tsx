@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import { css } from "@emotion/react";
+import { colors } from "../../styles/constants";
 
 const headerStyle = css`
   box-shadow: 0px 4px 6px 6px rgba(0, 0, 0, 0.2);
@@ -21,6 +22,7 @@ const headerInnerStyle = css`
 const logoStyle = css`
   font-size: 1.25rem;
   font-weight: bold;
+  color: ${colors.blue};
 `;
 
 const Header: FC = () => {

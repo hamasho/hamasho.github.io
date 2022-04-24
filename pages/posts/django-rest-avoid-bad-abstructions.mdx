@@ -1,11 +1,12 @@
-import Layout from "../../src/components/layout/BlogLayout.tsx";
+---
+title: Django REST's Class Based View Abstructions May Not Be Your Answer
+excerpt: Strugling with implementing Django Rest's CBV for complex resources? You may use it incorrectly.
+tags: Django, Programming
+thumbnail: /img/small/programming-01.jpg
+publishedDate: 2022-04-25
+---
 
-export const meta = {
-  title: "Django REST Framework's Class Based View Abstructions May Not Your Answer",
-  date: "2022-04-24",
-}
-
-# {meta.title}
+# Django REST's Class Based View Abstructions May Not Be Your Answer
 
 Django REST framework (DRF) is a powerful web framework
 developed top on battery-included Django framework.
@@ -21,5 +22,13 @@ DRF provides several features to make it easy.
 It has serializers/deserializers to become a bridge
 between JSON representations and Django models.
 
+## DRF's approaches to permissions and serializations
 
+## Problems to have method branches in both `get_permissions()` and `get_serializer()`
+
+## Solution
+
+## Conclusion
+
+import Layout from "../../src/components/layout/PostLayout.tsx";
 export default ({ children }) => <Layout>{children}</Layout>;
