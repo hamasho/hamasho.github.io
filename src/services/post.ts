@@ -11,7 +11,7 @@ const getTags = (s: string): string[] => {
 };
 
 export const getPostsFromFilesystem = (): PostInfo[] => {
-  const base = path.join(process.cwd(), "pages", "posts");
+  const base = path.join(process.cwd(), "posts");
   const files = fs.readdirSync(base);
   const posts = files
     .map((filename) => {
