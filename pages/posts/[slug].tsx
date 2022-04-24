@@ -1,6 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { css } from "@emotion/react";
 import Layout from "../../src/components/layout/Layout";
 import {
   getPostDetail,
@@ -9,7 +10,16 @@ import {
 import { PostInfo } from "../../src/types";
 
 // Custom components/renderers to pass to MDX.
-const components = {};
+const components = { Image };
+
+const articleStyle = css`
+  h1 {
+    margin-bottom: 0;
+  }
+  .excerpt {
+    opacity: 0.6;
+  }
+`;
 
 type Props = {
   post: PostInfo;
@@ -19,32 +29,11 @@ type Props = {
 const Page: NextPage<Props> = ({ post, source }) => {
   return (
     <Layout>
-      <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
-      </header>
-      <div className="post-header">
+      <div css={articleStyle}>
         <h1>{post.title}</h1>
-        <p className="description">{post.excerpt}</p>
-      </div>
-      <main>
+        <p className="excerpt">{post.excerpt}</p>
         <MDXRemote {...source} components={components} />
-      </main>
-
-      <style jsx>{`
-        .post-header h1 {
-          margin-bottom: 0;
-        }
-        .post-header {
-          margin-bottom: 2rem;
-        }
-        .description {
-          opacity: 0.6;
-        }
-      `}</style>
+      </div>
     </Layout>
   );
 };
