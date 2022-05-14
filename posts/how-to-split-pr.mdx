@@ -1,0 +1,165 @@
+---
+title: How to Split Pull Request for Good Review Process
+excerpt: >
+  Large pull requests are difficult to review.
+  Split it in meaningful chunks for your coworkers' mental health.
+tags: Programming
+thumbnail: /img/small/programming-01.jpg
+publishedDate: 2021-03-28
+---
+
+<Image src="/img/medium/programming-01.jpg" alt="" layout="responsive" width={1920} height={1080} />
+
+My project has been very busy recently.
+We are rewriting an existing website completely,
+so I have to write a lot of code every day.
+I’m exhausted, and my brain cells are dead.
+So I couldn’t think much about how to organize my pull request (PR).
+
+As a result, my PRs typically contain 500-1000 lines of code changes.
+My team takes it very seriously to have a dedicated code review.
+So my big PRs were apparently a big problem.
+
+## How many lines should a PR have?
+
+According to [this blog post](https://medium.com/@hugooodias/the-anatomy-of-a-perfect-pull-request-567382bb6067),
+and the original study at CISCO,
+a review process is more effective if they review 200-400 lines of code.
+He suggests that 250 lines of changes are a good standard.
+
+I agree with that.
+While I’m reviewing my coworker’s PRs,
+I can focus on it only if it only contains less than 300 lines.
+I don’t want to spend more than 30 mins on a single PR.
+So 250 lines of changes are a reasonable standard
+if I want to make the review process meaningful.
+
+But it’s also possible that if I implement a complex function
+for a single purpose,
+the code and its test can exceed 400 lines.
+In that case, it’s not a big problem.
+Reviewers need to check the function’s logic precisely
+but don’t have to spend much time on testing data and code.
+In that case, I think it’s not wrong to have many changes.
+
+So I decided to try to create a PR with less than 250 lines,
+but sometimes allow having extra code if necessary.
+
+## Why did my PR have more than 500 lines of changes?
+
+I’m working on a frontend project developing a very UI-rich web app.
+And it’s a complete rewrite of an existing project.
+
+In many cases, my PR contains a fully-functional React component.
+I complete the component so that it can run on
+[storybook](https://storybook.js.org/) in all expected scenarios.
+Therefore, the component itself is big and
+sometimes comes with several child components,
+utility functions, hooks, Redux integrations, and API requests.
+It’s not surprising if the diff contains 5 or 10 hundreds of lines.
+
+And when I started implementing, I often made optimistic assumptions.
+I just joined this project one month ago
+and am not familiar with the business domain.
+It doesn’t help either that I’m not familiar with a lot of tools,
+including [Next.js](https://nextjs.org/), storybooks,
+react-hooks, etc, etc.
+So I just can’t estimate how many things I need to add,
+delete and change or how much it results.
+In many cases, I even didn’t know what I have to do exactly.
+
+Hence, I often started implementing first,
+thinking like I need to create a single component and
+maybe one or two util functions.
+But then I realize I have to write some functions to fetch data from API,
+add actions and manage state for Redux and so on.
+The component is not that simple at all and
+I need to split it into several child components.
+Finally, when I create a PR, it contains nearly 1000 lines of changes.
+My poor coworkers have to review it.
+If it has a bad design or lacks some necessary features,
+I have to rewrite it again.
+So the update may also contain hundreds of lines,
+and poor souls become more miserable…
+
+I needed to stop doing this.
+
+## How should I split my PR?
+
+Here’s the strategy to make good PRs.
+
+### 1. Understand the problem well.
+
+Just like a lot of problems related to coding,
+designing or managing projects,
+this is the most important thing to keep a PR into a reasonable size.
+
+If I don’t understand the problem well,
+there’s no way I can estimate the required changes.
+So it’s important to take enough time to explore the problem,
+but it’s also required to communicate with other stakeholders
+like devs, designers, or product owners, if possible
+to understand why it’s required or if they have hidden requirements.
+
+If I understand the problem and current codebase,
+I’ll have a good sense of what I have to do.
+
+### 2. Design precisely.
+
+Now I can design the component.
+Split several child components from the target component,
+util and hook functions,
+then write API interaction or Redux code if necessary.
+Each function becomes a target for each PR,
+so it should have a clear purpose.
+
+This process is very important.
+If I design in a wrong way, I’ll make several PRs
+for the wrong components/functions.
+The reviews for the wrong PRs may go well
+if each PR has a clear purpose with enough documents and the code has no flaws.
+But when I finally start implementing the target component,
+it becomes clear that each sub-components are not designed correctly
+and I have to create all PRs again…
+It’s a big no-no, a complete waste of time.
+
+We can reduce this risk by taking enough time and effort
+for the design process.
+
+### 3. Start implementation, and split or merge if necessary.
+
+When I become to be confident enough in the design decisions,
+it’s time to start implementing.
+At this point, I should have some idea of what I have to do and
+roughly how many lines it may be.
+Or what existing functions I have to modify if necessary.
+
+Even if I’ve taken the time for the system design,
+sometimes the number of changes can be higher or less than I expected.
+Then think about it again, and if necessary, split or merge the changes.
+It’s not wrong to write a PR with more than 400 lines,
+only if it’s logically a single unit
+or a large number of changes are just test code.
+But always think about the reviewers and avoid wasting the reviewers’ time.
+
+### 4. Create a PR with sufficient documents and tests.
+
+When I create a PR for util functions or child components,
+it should be clear to reviewers what I want to accomplish.
+Reviewers can’t test the fully-functional target component,
+which is several PRs away from this,
+so I need to add plenty of descriptions.
+If necessary, write design documents,
+describe how I split this problem,
+and what each small component or function suppose to do.
+Then reviewers have a good sense of those codes and can provide good reviews.
+
+## Conclusion
+
+A good PR should contain only 200-400 lines of changes and
+concern only one or two functionalities.
+The important things are to understand the original problem well
+and spend enough time designing a solution.
+
+After all, I just need to be a good programmer,
+and enjoy coding and collaborating with coworkers!
