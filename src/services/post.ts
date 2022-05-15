@@ -44,7 +44,13 @@ export const getPostsFromFilesystem = (): PostInfo[] => {
     })
     .filter((p) => p.publishedDate !== "");
 
-  return posts;
+  // Sort by published date. Recently posts are on top.
+  const sortedPosts = [...posts].sort((p1, p2) => {
+    if (p1 === p2) return 0;
+    return p1 > p2 ? 1 : -1;
+  });
+
+  return sortedPosts;
 };
 
 type GetPostDetailResult = {
