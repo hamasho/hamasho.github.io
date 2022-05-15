@@ -27,16 +27,16 @@ const logoStyle = css`
 
 const Header: FC = () => {
   return (
-    <div css={headerStyle}>
-      <div css={headerInnerStyle}>
+    <header css={headerStyle}>
+      <nav css={headerInnerStyle}>
         <span css={logoStyle}>
           <Link href="/">HOME</Link>
         </span>
         <div>
           <Link href="/about">About</Link>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 
